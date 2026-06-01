@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IDELCOM — Sistema Tipográfico</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fafafa;
+    --surface: #ffffff;
+    --border: #e8e8e8;
+    --border-strong: #d4d4d4;
+    --blue: #0D4C9C;
+    --blue-soft: rgba(13, 76, 156, 0.7);
+    --blue-muted: rgba(13, 76, 156, 0.45);
+    --blue-faint: rgba(13, 76, 156, 0.08);
+    --orange: #F37023;
+    --orange-soft: rgba(243, 112, 35, 0.12);
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+    --shadow-sm: 0 1px 2px rgba(13, 76, 156, 0.04);
+    --shadow-md: 0 4px 16px rgba(13, 76, 156, 0.06);
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Nunito Sans', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--blue);
+    line-height: 1.5;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── HEADER ─────────────────────────── */
+  .header {
+    border-bottom: 1px solid var(--border);
+    background: rgba(250, 250, 250, 0.85);
+    backdrop-filter: blur(8px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 20px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+  }
+
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .logo { height: 24px; width: auto; }
+  .logo path[fill="#0D4C9C"] { fill: var(--blue); }
+  .logo path[fill="#F37023"] { fill: var(--orange); }
+
+  .header-divider {
+    width: 1px;
+    height: 24px;
+    background: var(--border-strong);
+  }
+
+  .header-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--blue-soft);
+    letter-spacing: 0.02em;
+  }
+
+  .header-meta {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--blue-muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* ── LAYOUT ─────────────────────────── */
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 64px 32px 96px;
+  }
+
+  @media (max-width: 640px) {
+    .container { padding: 40px 20px 80px; }
+    .header-inner { padding: 16px 20px; }
+  }
+
+  /* ── INTRO ──────────────────────────── */
+  .intro {
+    margin-bottom: 48px;
+  }
+
+  .intro-eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--blue-muted);
+    margin-bottom: 12px;
+  }
+
+  .intro-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--blue);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+  }
+
+  .intro-sub {
+    font-size: 15px;
+    color: var(--blue-soft);
+    line-height: 1.6;
+    max-width: 520px;
+  }
+
+  .ratio-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    padding: 8px 14px;
+    background: var(--orange-soft);
+    border-radius: 24px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--orange);
+    letter-spacing: 0.02em;
+  }
+
+  /* ── CONTROL PANEL ──────────────────── */
+  .controls {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 40px;
+    box-shadow: var(--shadow-sm);
+  }
+
+  @media (max-width: 640px) {
+    .controls { padding: 28px 24px; }
+  }
+
+  .controls-section-title {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--blue-muted);
+    margin-bottom: 24px;
+  }
+
+  .control-group {
+    margin-bottom: 32px;
+  }
+
+  .control-group:last-of-type {
+    margin-bottom: 40px;
+  }
+
+  .control-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 14px;
+  }
+
+  .control-label-text {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--blue);
+    letter-spacing: 0.01em;
+  }
+
+  .control-label-value {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--orange);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .control-hint {
+    font-size: 12px;
+    color: var(--blue-muted);
+    margin-top: 8px;
+    line-height: 1.5;
+  }
+
+  /* slider */
+  .slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--blue-faint);
+    outline: none;
+  }
+
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--orange);
+    cursor: pointer;
+    border: 3px solid var(--surface);
+    box-shadow: 0 0 0 1px var(--orange);
+    transition: transform 0.15s;
+  }
+
+  .slider::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+  }
+
+  .slider::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--orange);
+    cursor: pointer;
+    border: 3px solid var(--surface);
+    box-shadow: 0 0 0 1px var(--orange);
+  }
+
+  .slider-range {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--blue-muted);
+    margin-top: 8px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* pills (context) */
+  .pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .pill-btn {
+    padding: 8px 14px;
+    border: 1px solid var(--border-strong);
+    background: var(--surface);
+    color: var(--blue-soft);
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 24px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .pill-btn:hover {
+    border-color: var(--blue-muted);
+    color: var(--blue);
+  }
+
+  .pill-btn.active {
+    background: var(--blue);
+    color: var(--surface);
+    border-color: var(--blue);
+  }
+
+  /* ── COMPUTED VALUES TABLE ──────────── */
+  .computed {
+    background: var(--blue-faint);
+    border-radius: var(--radius-md);
+    padding: 24px;
+    border-left: 3px solid var(--orange);
+  }
+
+  .computed-row {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 16px;
+    align-items: baseline;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(13, 76, 156, 0.1);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .computed-row:last-child { border-bottom: none; }
+  .computed-row:first-child { padding-top: 0; }
+
+  .computed-label {
+    font-size: 13px;
+    color: var(--blue);
+    font-weight: 600;
+  }
+
+  .computed-label small {
+    display: block;
+    font-size: 11px;
+    color: var(--blue-muted);
+    font-weight: 500;
+    margin-top: 2px;
+  }
+
+  .computed-value {
+    font-size: 14px;
+    color: var(--blue);
+    font-weight: 700;
+    min-width: 64px;
+    text-align: right;
+  }
+
+  .computed-lh {
+    font-size: 12px;
+    color: var(--orange);
+    font-weight: 700;
+    min-width: 48px;
+    text-align: right;
+  }
+
+  .computed-header {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 16px;
+    padding-bottom: 12px;
+    margin-bottom: 4px;
+    border-bottom: 1px solid rgba(13, 76, 156, 0.2);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--blue-muted);
+  }
+
+  .computed-header span:nth-child(2),
+  .computed-header span:nth-child(3) {
+    text-align: right;
+  }
+
+  /* ── CSS OUTPUT ─────────────────────── */
+  .code-section {
+    margin-top: 32px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+
+  .code-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .code-header-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--blue);
+  }
+
+  .copy-btn {
+    background: var(--blue-faint);
+    border: 1px solid transparent;
+    color: var(--blue);
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.15s;
+    letter-spacing: 0.03em;
+  }
+
+  .copy-btn:hover { background: var(--blue); color: var(--surface); }
+  .copy-btn.copied { background: var(--orange); color: var(--surface); }
+
+  .code-body {
+    padding: 20px 24px;
+    font-family: 'Nunito Sans', monospace;
+    font-size: 12px;
+    color: var(--blue-soft);
+    line-height: 1.7;
+    white-space: pre;
+    overflow-x: auto;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .code-body .prop { color: var(--blue); font-weight: 600; }
+  .code-body .val { color: var(--orange); font-weight: 600; }
+  .code-body .comment { color: var(--blue-muted); font-style: italic; }
+
+  /* footer note */
+  .footer-note {
+    text-align: center;
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+    font-size: 11px;
+    color: var(--blue-muted);
+    letter-spacing: 0.05em;
+  }
+
+  .footer-note b { color: var(--orange); font-weight: 700; }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="header-left">
+      <svg class="logo" viewBox="0 0 1337 296" xmlns="http://www.w3.org/2000/svg" aria-label="IDELCOM">
+        <path d="M16.5848 150.386L205.867 112.727C208.021 112.311 210.176 112.814 212.359 114.236C214.527 115.657 215.82 117.453 216.237 119.607L220.229 140.188C220.646 142.343 220.114 144.468 218.621 146.551C217.127 148.633 215.303 149.883 213.149 150.3L23.8666 187.958C21.7122 188.374 19.5723 187.843 17.4323 186.364C15.3066 184.884 14.0284 183.06 13.6119 180.906L9.67654 160.597C9.26003 158.443 9.76271 156.303 11.1989 154.177C12.6352 152.052 14.4305 150.788 16.5848 150.371V150.386Z" fill="#F37023"/>
+        <path d="M229.552 189.251C228.001 181.309 227.153 177.359 225.674 169.259C225.286 167.119 223.764 165.194 221.006 163.643C218.263 162.078 215.362 161.517 212.36 161.991C170.91 170.436 116.491 181.74 81.7917 210.809C76.9228 208.942 71.6374 207.922 66.1079 207.922C41.8067 207.922 22.1016 227.628 22.1016 251.929C22.1016 276.23 41.8067 295.935 66.1079 295.935C90.4091 295.935 110.114 276.23 110.114 251.929C110.114 247.419 109.425 243.053 108.161 238.959C135.88 212.705 181.021 205.653 221.021 198.486C223.592 198.185 225.732 197.122 227.498 195.24C229.265 193.359 229.969 191.377 229.552 189.28V189.251ZM66.1079 271.62C59.2714 271.62 53.2392 268.129 49.7204 262.83C49.4332 262.399 49.1603 261.954 48.9018 261.494C48.8156 261.336 48.7294 261.164 48.6432 261.006C48.4565 260.647 48.2842 260.273 48.1118 259.9C48.04 259.727 47.9682 259.57 47.8964 259.397C47.681 258.88 47.4799 258.349 47.3075 257.803C47.3075 257.774 47.2932 257.731 47.2788 257.702C47.1209 257.171 46.9772 256.64 46.8623 256.094C46.8192 255.921 46.7905 255.735 46.7618 255.562C46.69 255.146 46.6182 254.715 46.5607 254.284C46.532 254.097 46.5176 253.925 46.5033 253.738C46.4458 253.15 46.4171 252.561 46.4171 251.957C46.4171 251.957 46.4171 251.943 46.4171 251.929C46.4171 251.914 46.4171 251.886 46.4171 251.871C46.4171 251.254 46.4458 250.636 46.5033 250.033C46.5176 249.817 46.5607 249.616 46.5894 249.401C46.6469 248.984 46.7043 248.582 46.7761 248.18C46.8192 247.936 46.8767 247.706 46.9341 247.462C47.0203 247.103 47.1065 246.744 47.207 246.385C47.2788 246.141 47.3506 245.897 47.4368 245.667C47.5517 245.322 47.6666 244.992 47.8102 244.661C47.9108 244.432 47.9969 244.187 48.0975 243.958C48.2411 243.627 48.3991 243.311 48.5571 242.995C48.672 242.78 48.7725 242.55 48.9018 242.335C49.0885 242.004 49.2895 241.688 49.4906 241.372C49.6055 241.186 49.7204 240.985 49.8497 240.812C50.1226 240.41 50.4098 240.037 50.7114 239.663C50.7976 239.563 50.8694 239.448 50.9556 239.347C51.3147 238.916 51.7024 238.5 52.0902 238.098C52.2482 237.94 52.4205 237.782 52.5929 237.624C52.8514 237.38 53.1243 237.121 53.3972 236.891C53.5983 236.719 53.7994 236.561 54.0148 236.403C54.2733 236.202 54.5462 236.001 54.8191 235.8C55.0489 235.642 55.2643 235.498 55.4941 235.354C55.767 235.182 56.0399 235.01 56.3271 234.852C56.5713 234.708 56.8155 234.579 57.0596 234.45C57.3469 234.306 57.6485 234.162 57.9357 234.019C58.1942 233.904 58.4384 233.789 58.6969 233.688C59.0129 233.559 59.3289 233.444 59.6592 233.344C59.9034 233.258 60.1619 233.157 60.406 233.085C60.7938 232.97 61.196 232.87 61.5838 232.784C63.0344 232.439 64.5424 232.238 66.0935 232.238C76.9659 232.238 85.7844 241.056 85.7844 251.929C85.7844 262.801 76.9659 271.62 66.0935 271.62H66.1079Z" fill="#F37023"/>
+        <path d="M174.63 0C150.329 0 130.624 19.7052 130.624 44.0064C130.624 49.3205 131.572 54.4048 133.295 59.1156C123.342 70.4476 110.559 78.4043 96.2258 84.2067C69.3968 95.0503 37.1245 98.2962 7.8109 101.93C7.3513 101.959 6.9348 102.03 6.51829 102.117C4.60809 102.634 2.97077 103.826 1.66379 105.765C0.227553 107.89 -0.275127 110.03 0.141382 112.185L0.457356 113.851L4.06233 132.493C4.47884 134.647 5.75706 136.472 7.88269 137.951C10.0083 139.43 12.1627 139.962 14.3171 139.545L25.5915 137.305C45.1675 134.331 66.9409 130.698 88.0392 124.881C116.247 117.097 143.205 105.391 161.977 86.16C165.984 87.3664 170.235 88.0128 174.644 88.0128C198.946 88.0128 218.651 68.3076 218.651 44.0064C218.651 19.7052 198.946 0 174.644 0H174.63ZM186.163 59.9486C186.091 60.0061 186.02 60.0635 185.948 60.1066C185.574 60.3795 185.172 60.6237 184.77 60.8678C184.669 60.9253 184.569 60.9971 184.468 61.0546C184.066 61.2844 183.664 61.4998 183.248 61.7008C183.133 61.7583 183.032 61.8014 182.917 61.8588C182.501 62.0599 182.07 62.2323 181.625 62.4046C181.524 62.4477 181.424 62.4764 181.323 62.5195C180.863 62.6919 180.404 62.8355 179.93 62.9647C179.858 62.9935 179.772 63.0078 179.7 63.0222C179.197 63.1515 178.695 63.2807 178.163 63.3669C177.014 63.5823 175.837 63.6972 174.616 63.6972C163.743 63.6972 154.925 54.8787 154.925 44.0064C154.925 33.1341 163.743 24.3155 174.616 24.3155C178.723 24.3155 182.544 25.5794 185.703 27.7338C186.307 28.1359 186.867 28.5955 187.413 29.0551C187.556 29.17 187.686 29.2993 187.815 29.4285C188.217 29.802 188.619 30.1754 188.993 30.5919C189.136 30.7499 189.28 30.8935 189.423 31.0659C189.797 31.4824 190.141 31.9276 190.472 32.3729C190.572 32.5165 190.687 32.6458 190.788 32.7894C191.204 33.3926 191.606 34.0245 191.951 34.6708C192.296 35.3028 192.583 35.9634 192.856 36.6241C192.942 36.8252 193 37.0406 193.086 37.2417C193.258 37.73 193.431 38.2327 193.574 38.7354C193.646 38.9795 193.703 39.2237 193.761 39.4679C193.876 39.9706 193.976 40.502 194.062 41.019C194.091 41.2488 194.134 41.4786 194.163 41.7084C194.249 42.4553 194.307 43.2165 194.307 44.0064V44.0351C194.307 44.6671 194.278 45.299 194.206 45.9022C194.192 46.1176 194.149 46.3331 194.12 46.5342C194.062 46.9363 194.005 47.3528 193.933 47.755C193.89 47.9991 193.818 48.2433 193.761 48.5018C193.675 48.8609 193.589 49.2056 193.488 49.5503C193.416 49.8088 193.33 50.0673 193.244 50.3258C193.129 50.6418 193.028 50.9578 192.899 51.2738C192.799 51.5323 192.684 51.8052 192.569 52.0637C192.439 52.3509 192.31 52.6238 192.167 52.9111C192.037 53.1839 191.894 53.4425 191.75 53.701C191.606 53.9452 191.448 54.1893 191.305 54.4335C191.133 54.7064 190.975 54.9792 190.788 55.2378C190.644 55.4388 190.501 55.6256 190.357 55.8266C190.141 56.1139 189.926 56.4011 189.696 56.674C189.653 56.7315 189.596 56.7746 189.553 56.832C188.547 57.9954 187.413 59.0438 186.163 59.9486Z" fill="#F37023"/>
+        <path d="M318.928 93.3828H303.589C301.98 93.3828 300.515 94.0579 299.194 95.4223C297.872 96.7867 297.197 98.2661 297.197 99.8746V223.406C297.197 225.014 297.858 226.479 299.194 227.8C300.515 229.122 301.98 229.782 303.589 229.782H318.726C320.335 229.782 321.814 229.122 323.179 227.8C324.543 226.479 325.218 225.014 325.218 223.406V99.8746C325.218 98.2661 324.572 96.7867 323.279 95.4223C321.987 94.0579 320.536 93.3828 318.928 93.3828Z" fill="#0D4C9C"/>
+        <path d="M481.683 98.1394C477.317 94.9653 473.74 93.3711 470.954 93.3711H371.71C369.757 93.3711 367.631 94.5488 365.319 96.8755C363.021 99.2166 361.857 101.357 361.857 103.31V219.933C361.857 221.886 363.006 224.011 365.319 226.324C367.617 228.622 369.757 229.785 371.71 229.785H471.155C473.942 229.785 477.503 228.22 481.826 225.074C486.15 221.929 489.956 218.252 493.23 214.03C496.505 209.807 498.156 206.331 498.156 203.617V119.769C498.156 117.04 496.505 113.565 493.187 109.299C489.869 105.048 486.035 101.328 481.668 98.1538L481.683 98.1394ZM470.164 198.662C470.164 202.525 467.033 205.656 463.17 205.656H396.873C393.009 205.656 389.878 202.525 389.878 198.662V124.609C389.878 120.746 393.009 117.615 396.873 117.615H463.17C467.033 117.615 470.164 120.746 470.164 124.609V198.662Z" fill="#0D4C9C"/>
+        <path d="M944.612 93.4142H852.807C850.021 93.4142 846.531 94.9366 842.337 97.967C838.143 100.997 834.467 104.588 831.293 108.696C828.118 112.818 826.524 116.236 826.524 118.951V215.193C825.404 213.11 823.494 210.999 820.765 208.873C818.05 206.748 815.681 205.685 813.656 205.685H812.406H812.09H805.857H798.216H728.846C724.982 205.685 721.851 202.554 721.851 198.691V99.906C721.851 98.2974 721.176 96.818 719.812 95.4536C718.447 94.0892 716.968 93.3711 715.359 93.3711H715.288H543.341C541.388 93.3711 539.262 94.5488 536.95 96.8755C534.652 99.2166 533.488 101.357 533.488 103.31V219.933C533.488 221.886 534.637 224.011 536.95 226.324C539.248 228.622 541.388 229.785 543.341 229.785H652.007C653.615 229.785 655.095 229.124 656.459 227.803C657.824 226.482 658.499 225.017 658.499 223.408V212.048C658.499 210.439 657.824 208.974 656.459 207.653C655.095 206.331 653.615 205.656 652.007 205.656H568.504C564.64 205.656 561.509 202.525 561.509 198.662V181.513C561.509 177.65 564.64 174.519 568.504 174.519H652.107C653.788 174.504 655.267 173.829 656.56 172.508C657.852 171.187 658.499 169.679 658.499 168.012V154.512C658.499 152.774 657.867 151.266 656.617 150.016C655.368 148.767 653.859 148.135 652.107 148.135H575.829L568.489 148.149C564.626 148.149 561.495 145.018 561.495 141.155V124.624C561.495 120.76 564.626 117.629 568.489 117.629H686.836C690.685 117.629 693.816 120.746 693.83 124.609V219.372C693.83 221.326 695.08 223.566 697.593 226.08C700.106 228.593 702.333 229.843 704.3 229.843H944.583C946.192 229.843 947.657 229.182 948.978 227.861C950.299 226.539 950.974 225.074 950.974 223.466V212.105C950.974 210.496 950.314 209.031 948.978 207.71C947.657 206.389 946.192 205.714 944.583 205.714H861.396C857.533 205.714 854.402 202.583 854.402 198.719V124.667C854.402 120.803 857.533 117.672 861.396 117.672H944.583C946.192 117.672 947.657 116.997 948.978 115.633C950.299 114.268 950.974 112.789 950.974 111.18V99.9203C950.974 98.3118 950.314 96.8324 948.978 95.468C947.657 94.1036 946.192 93.4286 944.583 93.4286L944.612 93.4142Z" fill="#0D4C9C"/>
+        <path d="M1099.11 97.963C1094.89 94.9325 1091.38 93.4102 1088.58 93.4102H1004.73C1001.95 93.4102 998.456 94.9325 994.262 97.963C990.068 100.993 986.392 104.584 983.218 108.692C980.044 112.814 978.449 116.232 978.449 118.946V204.259C978.449 206.988 980.029 210.406 983.218 214.514C986.392 218.636 990.068 222.212 994.262 225.243C998.456 228.273 1001.93 229.795 1004.73 229.795H1088.58C1091.37 229.795 1094.87 228.273 1099.11 225.243C1103.33 222.212 1107.02 218.636 1110.21 214.514C1113.38 210.392 1114.98 206.974 1114.98 204.259V118.946C1114.98 116.218 1113.4 112.799 1110.21 108.692C1107.04 104.57 1103.33 100.993 1099.11 97.963ZM1086.96 198.686C1086.96 202.55 1083.83 205.681 1079.96 205.681H1013.35C1009.49 205.681 1006.36 202.55 1006.36 198.686V124.634C1006.36 120.771 1009.49 117.64 1013.35 117.64H1079.96C1083.83 117.64 1086.96 120.771 1086.96 124.634V198.686Z" fill="#0D4C9C"/>
+        <path d="M1330.87 107.715C1328.16 104.369 1325.04 101.353 1321.61 98.7386C1316.91 95.1767 1313.05 93.4102 1310.03 93.4102H1256.02C1253.99 93.4102 1251.62 94.4586 1248.89 96.5555C1246.16 98.6524 1244.25 100.778 1243.13 102.947C1242.01 100.85 1240.1 98.7386 1237.37 96.6129C1234.66 94.4873 1232.28 93.4245 1230.25 93.4245H1175.82C1172.8 93.4245 1168.97 95.1911 1164.28 98.7242C1160.85 101.324 1157.74 104.326 1155.02 107.672C1151.3 112.254 1149.43 116.017 1149.43 118.961V223.433C1149.43 225.041 1150.09 226.506 1151.43 227.828C1152.75 229.149 1154.22 229.81 1155.82 229.81H1170.96C1172.57 229.81 1174.05 229.149 1175.42 227.828C1176.78 226.506 1177.45 225.041 1177.45 223.433V124.648C1177.45 120.785 1180.59 117.654 1184.45 117.654H1220.44C1224.3 117.654 1227.44 120.785 1227.44 124.648V223.433C1227.44 225.041 1228.11 226.506 1229.48 227.828C1230.84 229.149 1232.32 229.81 1233.93 229.81H1251.94C1253.62 229.81 1255.1 229.163 1256.39 227.871C1257.68 226.578 1258.33 225.099 1258.33 223.419V124.634C1258.33 120.771 1261.46 117.64 1265.32 117.64H1301.43C1305.29 117.64 1308.43 120.771 1308.43 124.634V223.419C1308.43 225.027 1309.09 226.492 1310.42 227.813C1311.74 229.135 1313.21 229.795 1314.82 229.795H1329.95C1331.64 229.795 1333.13 229.135 1334.46 227.813C1335.79 226.492 1336.45 225.027 1336.45 223.419V118.946C1336.45 116.017 1334.59 112.268 1330.92 107.701L1330.87 107.715Z" fill="#0D4C9C"/>
+      </svg>
+      <span class="header-divider"></span>
+      <span class="header-title">Sistema Tipográfico</span>
+    </div>
+    <span class="header-meta">Golden Ratio</span>
+  </div>
+</header>
+
+<main class="container">
+
+  <section class="intro">
+    <p class="intro-eyebrow">Configuración</p>
+    <h1 class="intro-title">Ajusta el sistema y todo se recalcula al instante.</h1>
+    <p class="intro-sub">Escala modular basada en Golden Ratio. Define el tamaño base y el contexto de uso. Los tamaños y line-heights se calculan automáticamente.</p>
+    <span class="ratio-badge">Ratio fijo &middot; 1.618</span>
+  </section>
+
+  <section class="controls">
+
+    <p class="controls-section-title">Parámetros</p>
+
+    <div class="control-group">
+      <div class="control-label">
+        <span class="control-label-text">Tamaño base</span>
+        <span class="control-label-value" id="baseValue">18px</span>
+      </div>
+      <input type="range" min="12" max="56" step="1" value="18" class="slider" id="baseSlider">
+      <div class="slider-range"><span>12px</span><span>56px</span></div>
+    </div>
+
+    <div class="control-group">
+      <div class="control-label">
+        <span class="control-label-text">Contexto de uso</span>
+      </div>
+      <div class="pills" id="contextPills">
+        <button class="pill-btn active" data-ctx="web">Web B2B</button>
+        <button class="pill-btn" data-ctx="blog">Blog · texto largo</button>
+        <button class="pill-btn" data-ctx="social">Social · carrusel</button>
+      </div>
+      <p class="control-hint">El contexto solo afecta el line-height del body. Más texto largo = más aire entre líneas.</p>
+    </div>
+
+    <p class="controls-section-title" style="margin-top:40px;">Valores calculados</p>
+
+    <div class="computed">
+      <div class="computed-header">
+        <span>Nivel</span>
+        <span>Tamaño</span>
+        <span>Line-height</span>
+      </div>
+      <div class="computed-row">
+        <span class="computed-label">Hero · KPI<small>ExtraBold</small></span>
+        <span class="computed-value" id="val-hero-size">—</span>
+        <span class="computed-lh" id="val-hero-lh">—</span>
+      </div>
+      <div class="computed-row">
+        <span class="computed-label">H1 · Título<small>Bold</small></span>
+        <span class="computed-value" id="val-h1-size">—</span>
+        <span class="computed-lh" id="val-h1-lh">—</span>
+      </div>
+      <div class="computed-row">
+        <span class="computed-label">H2 · Subtítulo<small>SemiBold</small></span>
+        <span class="computed-value" id="val-h2-size">—</span>
+        <span class="computed-lh" id="val-h2-lh">—</span>
+      </div>
+      <div class="computed-row">
+        <span class="computed-label">Body · Cuerpo<small>Regular</small></span>
+        <span class="computed-value" id="val-body-size">—</span>
+        <span class="computed-lh" id="val-body-lh">—</span>
+      </div>
+      <div class="computed-row">
+        <span class="computed-label">Caption · Tag<small>Light</small></span>
+        <span class="computed-value" id="val-caption-size">—</span>
+        <span class="computed-lh" id="val-caption-lh">—</span>
+      </div>
+    </div>
+
+    <div class="code-section">
+      <div class="code-header">
+        <span class="code-header-title">CSS Variables</span>
+        <button class="copy-btn" id="copyBtn">Copiar</button>
+      </div>
+      <pre class="code-body" id="codeOutput"></pre>
+    </div>
+
+  </section>
+
+  <p class="footer-note">
+    Sistema basado en escala modular · Nunito Sans · IDELCOM <b>·</b> ratio constante, base variable
+  </p>
+
+</main>
+
+<script>
+  const PHI = 1.618;
+
+  const state = {
+    base: 18,
+    context: 'web',
+  };
+
+  const LH = {
+    hero: 1.0,
+    h1: 1.1,
+    h2: 1.2,
+    caption: 1.4,
+    body: {
+      web: 1.618,
+      blog: 1.75,
+      social: 1.4,
+    },
+  };
+
+  function calc() {
+    const b = state.base;
+    return {
+      hero:    { size: Math.round(b * Math.pow(PHI, 3) * 1.5), lh: LH.hero },
+      h1:      { size: Math.round(b * Math.pow(PHI, 2)),       lh: LH.h1 },
+      h2:      { size: Math.round(b * PHI),                    lh: LH.h2 },
+      body:    { size: b,                                      lh: LH.body[state.context] },
+      caption: { size: Math.round(b / PHI),                    lh: LH.caption },
+    };
+  }
+
+  function render() {
+    const c = calc();
+
+    ['hero','h1','h2','body','caption'].forEach(lvl => {
+      const lhPx = Math.round(c[lvl].size * c[lvl].lh);
+      document.getElementById('val-' + lvl + '-size').textContent = c[lvl].size + 'px';
+      document.getElementById('val-' + lvl + '-lh').textContent = lhPx + 'px';
+    });
+
+    document.getElementById('baseValue').textContent = state.base + 'px';
+
+    updateCSS(c);
+  }
+
+  function updateCSS(c) {
+    const lh = {
+      hero:    Math.round(c.hero.size    * c.hero.lh),
+      h1:      Math.round(c.h1.size      * c.h1.lh),
+      h2:      Math.round(c.h2.size      * c.h2.lh),
+      body:    Math.round(c.body.size    * c.body.lh),
+      caption: Math.round(c.caption.size * c.caption.lh),
+    };
+
+    const css =
+`<span class="comment">/* IDELCOM — Sistema tipográfico (Golden Ratio) */</span>
+<span class="comment">/* Base: ${state.base}px · Ratio: 1.618 · Contexto: ${state.context} */</span>
+
+:root {
+  <span class="prop">--font-family</span>: <span class="val">'Nunito Sans'</span>, sans-serif;
+
+  <span class="comment">/* Tamaños */</span>
+  <span class="prop">--fs-hero</span>:    <span class="val">${c.hero.size}px</span>;
+  <span class="prop">--fs-h1</span>:      <span class="val">${c.h1.size}px</span>;
+  <span class="prop">--fs-h2</span>:      <span class="val">${c.h2.size}px</span>;
+  <span class="prop">--fs-body</span>:    <span class="val">${c.body.size}px</span>;
+  <span class="prop">--fs-caption</span>: <span class="val">${c.caption.size}px</span>;
+
+  <span class="comment">/* Line-heights */</span>
+  <span class="prop">--lh-hero</span>:    <span class="val">${lh.hero}px</span>;
+  <span class="prop">--lh-h1</span>:      <span class="val">${lh.h1}px</span>;
+  <span class="prop">--lh-h2</span>:      <span class="val">${lh.h2}px</span>;
+  <span class="prop">--lh-body</span>:    <span class="val">${lh.body}px</span>;
+  <span class="prop">--lh-caption</span>: <span class="val">${lh.caption}px</span>;
+
+  <span class="comment">/* Pesos */</span>
+  <span class="prop">--fw-hero</span>:     <span class="val">ExtraBold</span>;
+  <span class="prop">--fw-h1</span>:       <span class="val">Bold</span>;
+  <span class="prop">--fw-h2</span>:       <span class="val">SemiBold</span>;
+  <span class="prop">--fw-body</span>:     <span class="val">Regular</span>;
+  <span class="prop">--fw-emphasis</span>: <span class="val">SemiBold</span>; <span class="comment">/* inline */</span>
+  <span class="prop">--fw-caption</span>:  <span class="val">Light</span>;
+}`;
+
+    document.getElementById('codeOutput').innerHTML = css;
+  }
+
+  document.getElementById('baseSlider').addEventListener('input', (e) => {
+    state.base = +e.target.value;
+    render();
+  });
+
+  document.getElementById('contextPills').addEventListener('click', (e) => {
+    if (!e.target.matches('.pill-btn')) return;
+    document.querySelectorAll('#contextPills .pill-btn').forEach(b => b.classList.remove('active'));
+    e.target.classList.add('active');
+    state.context = e.target.dataset.ctx;
+    render();
+  });
+
+  document.getElementById('copyBtn').addEventListener('click', () => {
+    const text = document.getElementById('codeOutput').textContent;
+    navigator.clipboard.writeText(text).then(() => {
+      const btn = document.getElementById('copyBtn');
+      btn.textContent = 'Copiado';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.textContent = 'Copiar';
+        btn.classList.remove('copied');
+      }, 1500);
+    });
+  });
+
+  render();
+</script>
+
+</body>
+</html>
